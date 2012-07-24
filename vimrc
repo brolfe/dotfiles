@@ -82,87 +82,6 @@ imap <C-U> <ESC>Q
 map B A<Space>{<Esc>lxo}<Esc>ko
 imap <C-Y> <ESC>B
 
-" Automatically close parenthesis, square brackets, curly braces, and angle brackets.
-inoremap ( ()<Left>
-inoremap [ []<Left>
-inoremap { {}<Left>
-autocmd Syntax html,vim inoremap < <lt>><Left>
-
-function! ClosePair(char)
-if getline('.')[col('.') - 1] == a:char
-return "\<Right>"
-else
-return a:char
-endif
-endf
-
-inoremap ) <c-r>=ClosePair(')')<CR>
-inoremap ] <c-r>=ClosePair(']')<CR>
-inoremap } <c-r>=ClosePair('}')<CR>
-
-" Auto Close Quotes (function allows for escaping auto quotes).
-function! QuoteDelim(char)
-    let line = getline('.')
-    let col = col('.')
-    if line[col - 2] == "\\"
-        "Inserting a quoted quotation mark into the string
-        return a:char
-    elseif line[col - 1] == a:char
-        "Escaping out of the string
-        return "\<Right>"
-    else
-        "Starting a string
-        return a:char.a:char."\<Left>"
-    endif
-endf
-
-inoremap " <c-r>=QuoteDelim('"')<CR>
-inoremap ' <c-r>=QuoteDelim("'")<CR>
-
-" Delete empty pairs
-function! InAnEmptyPair()
-let cur = strpart(getline('.'),getpos('.')[2]-2,2)
-for pair in (split(&matchpairs,',') + ['":"',"':'"])
-if cur == join(split(pair,':'),'')
-return 1
-endif
-endfor
-return 0
-endfunc
-
-func! DeleteEmptyPairs()
-if InAnEmptyPair()
-return "\<Left>\<Del>\<Del>"
-else
-return "\<BS>"
-endif
-endfunc
-
-inoremap <expr> <BS> DeleteEmptyPairs()
-
-"auto indent after pressing return in an empty pair.
-func! IndentEmptyPair()
-  if InAnEmptyPair()
-    return "\<CR>\<CR>\<Up>\<Tab>"
-  else
-    return "\<CR>"
-  endif
-endfunc
-
-inoremap <expr> <CR> IndentEmptyPair()
-
-" move the current line up or down
-nmap <C-Down> :m+<CR>==
-nmap <C-Up> :m-2<CR>==
-imap <C-Down> <C-O>:m+<CR><C-O>==
-imap <C-Up> <C-O>:m-2<CR><C-O>==
-
-" move the selected block up or down
-vmap <C-Down> :m'>+<CR>gv=gv
-vmap <C-Up> :m'<-2<CR>gv=gv
-
-map <F4> :call SwitchCH()<Return>
-
 "when changing indentation in visual mode, reselect the same text
 vnoremap > >gv
 vnoremap < <gv
@@ -197,15 +116,10 @@ function! InitializeDirectories()
 endfunction
 
 if has("unix")
-    source /home/user/brolfe/.vim/abbrev.vim
-    filetype on
-    filetype plugin on
-    filetype indent on
+    source ~/.vim/abbrev.vim
+    filetype plugin indent on
 
     " PLUGIN Preferences
-    " Notes
-    let g:notes_directory = '~/notes'
-    let g:notes_suffix = '.txt'
     " VimWiki
     let g:vimwiki_folding=0
     let g:vimwiki_list=[{'path_html': '~/public_html/vimwiki/'}]
