@@ -6,6 +6,8 @@ elseif has("unix")
     set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
 endif
 
+call pathogen#infect()
+
 set nocompatible                " turn off vi compatibility
 set ruler                       " Show the line and column number
                                 " of the cursor position
