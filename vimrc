@@ -82,6 +82,55 @@ imap <C-U> <ESC>Q
 map B A<Space>{<Esc>lxo}<Esc>ko
 imap <C-Y> <ESC>B
 
+" Automatically close parenthesis, square brackets, curly braces, and angle brackets.
+inoremap ( ()<Left>
+inoremap [ []<Left>
+inoremap { {}<Left>
+
+function! ClosePair(char)
+    if getline('.')[col('.') - 1] == a:char
+        return "\<Right>"
+    else
+        return a:char
+    endif
+endf
+
+inoremap ) <c-r>=ClosePair(')')<CR>
+inoremap ] <c-r>=ClosePair(']')<CR>
+inoremap } <c-r>=ClosePair('}')<CR>
+
+" Delete empty pairs
+function! InAnEmptyPair()
+    let cur = strpart(getline('.'),getpos('.')[2]-2,2)
+    for pair in (split(&matchpairs,',') + ['":"',"':'"])
+        if cur == join(split(pair,':'),'')
+            return 1
+        endif
+    endfor
+    return 0
+endfunc
+
+func! DeleteEmptyPairs()
+    if InAnEmptyPair()
+        return "\<Left>\<Del>\<Del>"
+    else
+        return "\<BS>"
+    endif
+endfunc
+
+inoremap <expr> <BS> DeleteEmptyPairs()
+
+"auto indent after pressing return in an empty pair.
+func! IndentEmptyPair()
+  if InAnEmptyPair()
+    return "\<CR>\<CR>\<Up>\<Tab>"
+  else
+    return "\<CR>"
+  endif
+endfunc
+
+inoremap <expr> <CR> IndentEmptyPair()
+
 "when changing indentation in visual mode, reselect the same text
 vnoremap > >gv
 vnoremap < <gv
