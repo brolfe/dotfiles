@@ -8,6 +8,7 @@ endif
 
 call pathogen#infect()
 
+set guioptions-=T               " Turn off toolbar in gvim
 set nocompatible                " turn off vi compatibility
 set ruler                       " Show the line and column number
                                 " of the cursor position
@@ -48,6 +49,8 @@ set nowrap                      " No line wrapping
 set hidden                      " Allow modified buffers to be hidden
 set switchbuf=usetab            " If a buffer is already open in an existing tab, switch to it
 syntax on
+" Treat scss files like css files
+au BufRead,BufNewFile *.scss set filetype=css
 
 " Copy
 map <C-c> "+y
@@ -171,7 +174,7 @@ if has("unix")
     " PLUGIN Preferences
     " VimWiki
     let g:vimwiki_folding=0
-    let g:vimwiki_list=[{'path_html': '~/public_html/vimwiki/'}]
+    let g:vimwiki_list=[{'path_html': '~/vimwiki_html/'}]
     call InitializeDirectories()
 endif
 if has("win32")
