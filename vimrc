@@ -78,12 +78,12 @@ endfunc
 nmap <Leader>pe :exec P4Edit()<CR>
 
 "Make curly braces lined up with this line and go into insert indented by 4
-map Q o{<Esc>lxo}<Esc>ko
-imap <C-U> <ESC>Q
+"map Q o{<Esc>lxo}<Esc>ko
+"imap <C-U> <ESC>Q
 
 "Make curly braces lined up with this line and go into insert indented by 4
 map B A<Space>{<Esc>lxo}<Esc>ko
-imap <C-Y> <ESC>B
+imap <C-U> <ESC>B
 
 " Automatically close parenthesis, square brackets, curly braces, and angle brackets.
 inoremap ( ()<Left>
