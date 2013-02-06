@@ -85,6 +85,9 @@ nmap <Leader>pe :exec P4Edit()<CR>
 map B A<Space>{<Esc>lxo}<Esc>ko
 imap <C-U> <ESC>B
 
+" Insert function(){}
+imap <Leader>f function(){}<Esc>i<Enter>
+
 " Automatically close parenthesis, square brackets, curly braces, and angle brackets.
 inoremap ( ()<Left>
 inoremap [ []<Left>
