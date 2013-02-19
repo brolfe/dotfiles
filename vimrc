@@ -9,7 +9,7 @@ call pathogen#infect()
 
 set background=dark
 colorscheme solarized              " Load color scheme {name}
-let g:solarized_termcolors=256
+set t_Co=256
 
 set guioptions-=T               " Turn off toolbar in gvim
 set nocompatible                " turn off vi compatibility
