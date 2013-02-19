@@ -1,4 +1,3 @@
-colorscheme desert              " Load color scheme {name}
                                 " Set Font
 if has("win32")
     set guifont=Consolas:h11:cANSI
@@ -7,6 +6,10 @@ elseif has("unix")
 endif
 
 call pathogen#infect()
+
+set background=dark
+colorscheme solarized              " Load color scheme {name}
+let g:solarized_termcolors=256
 
 set guioptions-=T               " Turn off toolbar in gvim
 set nocompatible                " turn off vi compatibility
@@ -51,6 +54,8 @@ set switchbuf=usetab            " If a buffer is already open in an existing tab
 syntax on
 " Treat scss files like css files
 au BufRead,BufNewFile *.scss set filetype=css
+" Treat mustache files like html files
+au BufRead,BufNewFile *.mustache set filetype=html
 
 " Copy
 map <C-c> "+y
