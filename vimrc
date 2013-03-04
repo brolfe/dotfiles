@@ -91,7 +91,7 @@ map B A<Space>{<Esc>lxo}<Esc>ko
 imap <C-U> <ESC>B
 
 " Insert function(){}
-imap <Leader>f function(){}<Esc>i<Enter>
+imap <Leader>f function(){}<Esc>i<Enter><Esc>k$hi
 
 " Automatically close parenthesis, square brackets, curly braces, and angle brackets.
 inoremap ( ()<Left>
