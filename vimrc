@@ -53,12 +53,18 @@ set hidden                      " Allow modified buffers to be hidden
 set switchbuf=usetab            " If a buffer is already open in an existing tab, switch to it
 set iskeyword+=-                " Treat dashes - as part of the word
 syntax on
+
 " Treat scss files like css files
 au BufRead,BufNewFile *.scss set filetype=css
 " Treat less files like css files
 au BufRead,BufNewFile *.less set filetype=css
 " Treat mustache files like html files
 au BufRead,BufNewFile *.mustache set filetype=html
+" Treat handlebars files like html files
+au BufRead,BufNewFile *.hb set filetype=html
+au BufRead,BufNewFile *.hbs set filetype=html
+" Treat fws files like xml files
+au BufRead,BufNewFile *.fws set filetype=xml
 
 " Copy
 map <C-c> "+y
