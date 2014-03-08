@@ -102,6 +102,9 @@ imap <C-U> <ESC>B
 " Insert function() {}
 imap <Leader>f function() {}<Esc>i<Enter><Esc>k$hhi
 
+" Clear trailing whitespace
+map <Leader>w :%s/\s\+$//<Enter>
+
 " Automatically close parenthesis, square brackets, curly braces, and angle brackets.
 inoremap ( ()<Left>
 inoremap [ []<Left>
