@@ -10,7 +10,6 @@ set background=dark
 colorscheme solarized              " Load color scheme {name}
 set t_Co=256
 
-set iskeyword+=-                " hyphen part of word
 set guioptions-=T               " Turn off toolbar in gvim
 set nocompatible                " turn off vi compatibility
 set ruler                       " Show the line and column number
@@ -51,11 +50,20 @@ set encoding=utf-8              " UTF-8 character encoding
 set nowrap                      " No line wrapping
 set hidden                      " Allow modified buffers to be hidden
 set switchbuf=usetab            " If a buffer is already open in an existing tab, switch to it
+set iskeyword+=-                " Treat dashes - as part of the word
 syntax on
+
 " Treat scss files like css files
 au BufRead,BufNewFile *.scss set filetype=css
+" Treat less files like css files
+au BufRead,BufNewFile *.less set filetype=css
 " Treat mustache files like html files
 au BufRead,BufNewFile *.mustache set filetype=html
+" Treat handlebars files like html files
+au BufRead,BufNewFile *.hb set filetype=html
+au BufRead,BufNewFile *.hbs set filetype=html
+" Treat fws files like xml files
+au BufRead,BufNewFile *.fws set filetype=xml
 
 " Copy
 map <C-c> "+y
@@ -90,8 +98,8 @@ nmap <Leader>pe :exec P4Edit()<CR>
 map B A<Space>{<Esc>lxo}<Esc>ko
 imap <C-U> <ESC>B
 
-" Insert function(){}
-imap <Leader>f function(){}<Esc>i<Enter><Esc>k$hi
+" Insert function() {}
+imap <Leader>f function() {}<Esc>i<Enter><Esc>k$hhi
 
 " Automatically close parenthesis, square brackets, curly braces, and angle brackets.
 inoremap ( ()<Left>
