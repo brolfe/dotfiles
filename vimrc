@@ -1,4 +1,3 @@
-                                " Set Font
 if has("win32")
     set guifont=Consolas:h11:cANSI
 elseif has("unix")
@@ -11,6 +10,7 @@ set background=dark
 colorscheme solarized              " Load color scheme {name}
 set t_Co=256
 
+set iskeyword+=-                " hyphen part of word
 set guioptions-=T               " Turn off toolbar in gvim
 set nocompatible                " turn off vi compatibility
 set ruler                       " Show the line and column number
@@ -186,5 +186,6 @@ if has("unix")
     call InitializeDirectories()
 endif
 if has("win32")
-    set autochdir           " Always set the working directory to the current file
+    set noautochdir           " Always set the working directory to the current file
+    set noswapfile            " No swap files on windows cuz they annoyin'
 endif
