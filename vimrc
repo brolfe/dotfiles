@@ -7,6 +7,9 @@ endif
 call pathogen#infect()
 
 set background=dark
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
+let g:solarized_termcolors = 16
 colorscheme solarized              " Load color scheme {name}
 set t_Co=256
 
@@ -70,8 +73,8 @@ map <C-c> "+y
 " Cut
 map <C-x> "+x
 " Paste
-map <C-v> a<Space><Esc>"+gP
-imap <C-v> <Space><ESC>"+gP
+"map <C-v> a<Space><Esc>"+gP
+imap <C-v> <Space><ESC>"+gPxi
 " Select all
 map <C-a> ggVG
 map <MiddleMouse> <Nop>
@@ -200,3 +203,6 @@ if has("win32")
     set noautochdir           " Always set the working directory to the current file
     set noswapfile            " No swap files on windows cuz they annoyin'
 endif
+
+source ~/gdrive/conf/google.vim
+
