@@ -1,4 +1,6 @@
 dotfiles
 ========
 
-My dot files.
+To add plugins, follow:
+
+https://github.com/gmarik/Vundle.vim

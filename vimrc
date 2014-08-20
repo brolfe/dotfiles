@@ -4,7 +4,26 @@ elseif has("unix")
     set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
 endif
 
-call pathogen#infect()
+set nocompatible                " turn off vi compatibility
+filetype off
+
+set rtp+=~/.vim/bundle/vundle
+call vundle#begin()
+
+" let Vundle manage Vundle, required (yo dawg)
+Plugin 'gmarik/vundle'
+
+Plugin 'scrooloose/nerdtree'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'pangloss/vim-javascript'
+"Plugin 'tpope/vim-commentary'
+"Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-surround'
+Plugin 'kien/ctrlp.vim'
+Plugin 'rking/ag.vim'
+
+call vundle#end()
+filetype plugin indent on
 
 set background=dark
 let g:solarized_visibility = "high"
@@ -14,7 +33,6 @@ colorscheme solarized              " Load color scheme {name}
 set t_Co=256
 
 set guioptions-=T               " Turn off toolbar in gvim
-set nocompatible                " turn off vi compatibility
 set ruler                       " Show the line and column number
                                 " of the cursor position
 set number                      " Print the line number in front of each line
@@ -191,7 +209,6 @@ endfunction
 
 if has("unix")
     source ~/.vim/abbrev.vim
-    filetype plugin indent on
 
     " PLUGIN Preferences
     " VimWiki
