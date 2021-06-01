@@ -7,6 +7,8 @@ Install oh-my-zsh:
 $ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
+Add `vi-mode` list of plugins in `.zshrc`.
+
 Clone this repo:
 
 ```shell

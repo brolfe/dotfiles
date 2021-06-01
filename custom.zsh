@@ -1,6 +1,5 @@
 
 # Set up editor
-bindkey -v
 export EDITOR=vim
 
 # Hate dupes on scrollback:
