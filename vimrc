@@ -28,9 +28,8 @@ filetype plugin indent on
 set background=dark
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
-let g:solarized_termcolors = 16
+let g:solarized_termcolors = 256
 colorscheme solarized              " Load color scheme {name}
-set t_Co=256
 
 set guioptions-=T               " Turn off toolbar in gvim
 set ruler                       " Show the line and column number
@@ -74,18 +73,6 @@ set switchbuf=usetab            " If a buffer is already open in an existing tab
 set iskeyword+=-                " Treat dashes - as part of the word
 syntax on
 
-" Treat scss files like css files
-au BufRead,BufNewFile *.scss set filetype=css
-" Treat less files like css files
-au BufRead,BufNewFile *.less set filetype=css
-" Treat mustache files like html files
-au BufRead,BufNewFile *.mustache set filetype=html
-" Treat handlebars files like html files
-au BufRead,BufNewFile *.hb set filetype=html
-au BufRead,BufNewFile *.hbs set filetype=html
-" Treat fws files like xml files
-au BufRead,BufNewFile *.fws set filetype=xml
-
 " Copy
 map <C-c> "+y
 " Cut
@@ -97,33 +84,6 @@ imap <C-v> <Space><ESC>"+gPxi
 map <C-a> ggVG
 map <MiddleMouse> <Nop>
 imap <MiddleMouse> <Nop>
-
-" Perf edit current file (control pe)
-function! P4Edit()
-    if has("vms")
-        return '!perf edit %'
-    elseif has("unix")
-        return '!p4 edit %'
-    else
-        return ''
-    endif
-endfunc
-
-nmap <Leader>pe :exec P4Edit()<CR>
-
-"Make curly braces lined up with this line and go into insert indented by 4
-"map Q o{<Esc>lxo}<Esc>ko
-"imap <C-U> <ESC>Q
-
-"Make curly braces lined up with this line and go into insert indented by 4
-map B A<Space>{<Esc>lxo}<Esc>ko
-imap <C-U> <ESC>B
-
-" Insert function() {}
-imap <Leader>f function() {}<Esc>i<Enter><Esc>k$hhi
-
-" Clear trailing whitespace
-map <Leader>w :%s/\s\+$//<Enter>
 
 " Automatically close parenthesis, square brackets, curly braces, and angle brackets.
 inoremap ( ()<Left>
@@ -220,6 +180,3 @@ if has("win32")
     set noautochdir           " Always set the working directory to the current file
     set noswapfile            " No swap files on windows cuz they annoyin'
 endif
-
-source ~/gdrive/conf/google.vim
-

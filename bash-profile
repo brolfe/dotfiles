@@ -5,8 +5,6 @@ if [ "$PS1" != "" ]; then
     stty ixoff -ixon
 fi
 
-source ~/.git-prompt.sh
-
 ##-ANSI-COLOR-CODES-##
 COLOR_OFF="\[\033[0m\]"
 RED="\[\033[31;1m\]"

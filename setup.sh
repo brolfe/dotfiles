@@ -5,7 +5,7 @@ git submodule update --init
 
 # Iterate over the list of setup files we want to alias from our dotfile
 # distribution
-for file in vimrc vim tmux.conf gitconfig git-prompt.sh; do
+for file in vimrc vim tmux.conf gitconfig; do
    # Check to see if the file already has a symlink. If it does, we won't touch
    # it.
    if [ ! -h ~/.${file} ]; then
@@ -24,3 +24,6 @@ for file in vimrc vim tmux.conf gitconfig git-prompt.sh; do
       ln -s ~/dotfiles/${file} ~/.${file}
    fi
 done
+
+# Softlink zsh customizations to $ZSH_CUSTOM dir.
+ln -s ~/dotfiles/custom.zsh ~/.oh-my-zsh/custom/custom.zsh
