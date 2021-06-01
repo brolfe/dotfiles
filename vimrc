@@ -16,11 +16,11 @@ Plugin 'gmarik/vundle'
 Plugin 'scrooloose/nerdtree'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'pangloss/vim-javascript'
-"Plugin 'tpope/vim-commentary'
-"Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'kien/ctrlp.vim'
 Plugin 'rking/ag.vim'
+Plugin 'vim-scripts/AutoClose'
 
 call vundle#end()
 filetype plugin indent on
@@ -85,55 +85,6 @@ map <C-a> ggVG
 map <MiddleMouse> <Nop>
 imap <MiddleMouse> <Nop>
 
-" Automatically close parenthesis, square brackets, curly braces, and angle brackets.
-inoremap ( ()<Left>
-inoremap [ []<Left>
-inoremap { {}<Left>
-
-function! ClosePair(char)
-    if getline('.')[col('.') - 1] == a:char
-        return "\<Right>"
-    else
-        return a:char
-    endif
-endf
-
-inoremap ) <c-r>=ClosePair(')')<CR>
-inoremap ] <c-r>=ClosePair(']')<CR>
-inoremap } <c-r>=ClosePair('}')<CR>
-
-" Delete empty pairs
-function! InAnEmptyPair()
-    let cur = strpart(getline('.'),getpos('.')[2]-2,2)
-    for pair in (split(&matchpairs,',') + ['":"',"':'"])
-        if cur == join(split(pair,':'),'')
-            return 1
-        endif
-    endfor
-    return 0
-endfunc
-
-func! DeleteEmptyPairs()
-    if InAnEmptyPair()
-        return "\<Left>\<Del>\<Del>"
-    else
-        return "\<BS>"
-    endif
-endfunc
-
-inoremap <expr> <BS> DeleteEmptyPairs()
-
-"auto indent after pressing return in an empty pair.
-func! IndentEmptyPair()
-  if InAnEmptyPair()
-    return "\<CR>\<CR>\<Up>\<Tab>"
-  else
-    return "\<CR>"
-  endif
-endfunc
-
-inoremap <expr> <CR> IndentEmptyPair()
-
 "when changing indentation in visual mode, reselect the same text
 vnoremap > >gv
 vnoremap < <gv
@@ -169,11 +120,6 @@ endfunction
 
 if has("unix")
     source ~/.vim/abbrev.vim
-
-    " PLUGIN Preferences
-    " VimWiki
-    let g:vimwiki_folding=0
-    let g:vimwiki_list=[{'path_html': '~/vimwiki_html/'}]
     call InitializeDirectories()
 endif
 if has("win32")
