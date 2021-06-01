@@ -18,6 +18,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'pangloss/vim-javascript'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-sensible'
 Plugin 'kien/ctrlp.vim'
 Plugin 'rking/ag.vim'
 Plugin 'vim-scripts/AutoClose'
@@ -36,7 +37,6 @@ set ruler                       " Show the line and column number
                                 " of the cursor position
 set number                      " Print the line number in front of each line
 set list                        " Show tabs
-set listchars=tab:>-
 set showmatch                   " When a bracket is inserted,
                                 " briefly jump to the matching one
 "set noswf                       " Do not use a swapfile for the buffer
@@ -71,7 +71,12 @@ set nowrap                      " No line wrapping
 set hidden                      " Allow modified buffers to be hidden
 set switchbuf=usetab            " If a buffer is already open in an existing tab, switch to it
 set iskeyword+=-                " Treat dashes - as part of the word
-syntax on
+
+syntax on                       " Enable syntax highlighting
+
+" use » to mark Tabs and ° to mark trailing whitespace. This is a
+" non-obtrusive way to mark these special characters.
+set list listchars=tab:»\ ,trail:°
 
 " Copy
 map <C-c> "+y

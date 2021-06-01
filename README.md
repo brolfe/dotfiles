@@ -28,3 +28,6 @@ To add plugins, follow:
 https://github.com/gmarik/Vundle.vim
 
 (Execute `:PluginInstall` within Vim.)
+
+For tmux, start `tmux` then run `prefix + I` to install tmux plugins.
+That is, Ctrl + a then capital "I".
