@@ -1,13 +1,11 @@
 dotfiles
 ========
 
-Install oh-my-zsh:
+Install oh-my-bash:
 
 ```shell
-$ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
 ```
-
-Add `vi-mode` list of plugins in `.zshrc`.
 
 Clone this repo:
 

@@ -26,4 +26,4 @@ for file in vimrc vim tmux.conf gitconfig; do
 done
 
 # Softlink zsh customizations to $ZSH_CUSTOM dir.
-ln -s ~/dotfiles/custom.zsh ~/.oh-my-zsh/custom/custom.zsh
+ln -s ~/dotfiles/custom.sh ~/.oh-my-bash/custom/brolfe-personal.sh
