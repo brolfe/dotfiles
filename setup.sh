@@ -27,3 +27,4 @@ done
 
 # Softlink zsh customizations to $ZSH_CUSTOM dir.
 ln -s ~/dotfiles/custom.sh ~/.oh-my-bash/custom/brolfe-personal.sh
+ln -s "$HOME/.vimrc" "$HOME/.ideavimrc"
